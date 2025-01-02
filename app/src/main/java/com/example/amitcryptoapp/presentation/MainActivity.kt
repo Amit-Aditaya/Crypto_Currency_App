@@ -1,5 +1,6 @@
 package com.example.amitcryptoapp.presentation
 
+
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -18,6 +19,7 @@ import com.example.amitcryptoapp.presentation.coin_detail.CoinDetailScreen
 import com.example.amitcryptoapp.presentation.coin_list.CoinListScreen
 import com.example.amitcryptoapp.presentation.ui.theme.AmitCryptoAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.compose.ui.graphics.Color
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -28,12 +30,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AmitCryptoAppTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                  //  color = MaterialTheme.colorScheme.secondary
+                    color = Color(0xff282828)
                 ) {
-
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
@@ -47,7 +48,7 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Screen.CoinDetailScreen.route + "/{coinId}"
                         ) {
-                            CoinDetailScreen()
+                            CoinDetailScreen(navController = navController)
                         }
                     }
 
