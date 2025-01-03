@@ -20,6 +20,7 @@ import com.example.amitcryptoapp.presentation.coin_list.CoinListScreen
 import com.example.amitcryptoapp.presentation.ui.theme.AmitCryptoAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.ui.graphics.Color
+import com.example.amitcryptoapp.presentation.coin_twits.CoinTwitsScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -49,6 +50,11 @@ class MainActivity : ComponentActivity() {
                             route = Screen.CoinDetailScreen.route + "/{coinId}"
                         ) {
                             CoinDetailScreen(navController = navController)
+                        }
+                        composable(
+                            route = Screen.CoinTwitsScreen.route
+                        ) {
+                            CoinTwitsScreen(navController = navController)
                         }
                     }
 

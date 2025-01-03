@@ -18,8 +18,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -30,9 +32,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -58,8 +63,6 @@ fun CoinDetailScreen(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(20.dp)
             ) {
-
-
                 item {
                     IconButton(
                         onClick = {
@@ -139,7 +142,29 @@ fun CoinDetailScreen(
                     )
                     Divider(color = Color.DarkGray)
                 }
+                item {
+                    Spacer(modifier = Modifier.height(50.dp))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.Center)
+                    ) {
+                        Row(
+                            modifier = Modifier.align(Alignment.Center)
+                        ) {
+                            ClickableText(
+                                text = AnnotatedString("Twitter Feeds"),
+                                onClick = {
+                                    navController.navigate(Screen.CoinTwitsScreen.route)
+                                },
+                                style = TextStyle(color = Color.Green, fontStyle = FontStyle.Italic, fontSize = TextUnit.Unspecified)
+                            )
+
+                        }
+                    }
+                }
             }
+
         }
 
         if (state.error.isNotBlank()) {
