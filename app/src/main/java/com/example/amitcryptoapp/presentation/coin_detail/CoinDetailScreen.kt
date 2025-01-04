@@ -153,9 +153,10 @@ fun CoinDetailScreen(
                             modifier = Modifier.align(Alignment.Center)
                         ) {
                             ClickableText(
-                                text = AnnotatedString("Twitter Feeds"),
+                                text = AnnotatedString("Twitter Feeds on ${coin.coinId}"),
                                 onClick = {
-                                    navController.navigate(Screen.CoinTwitsScreen.route)
+                                 //   navController.navigate(Screen.CoinTwitsScreen.route)
+                                    navController.navigate(Screen.CoinTwitsScreen.route + "/${coin.coinId}")
                                 },
                                 style = TextStyle(color = Color.Green, fontStyle = FontStyle.Italic, fontSize = TextUnit.Unspecified)
                             )

@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
                             CoinDetailScreen(navController = navController)
                         }
                         composable(
-                            route = Screen.CoinTwitsScreen.route
+                            route = Screen.CoinTwitsScreen.route + "/{coinId}"
                         ) {
                             CoinTwitsScreen(navController = navController)
                         }

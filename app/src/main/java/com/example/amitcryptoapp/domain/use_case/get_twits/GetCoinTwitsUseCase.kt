@@ -25,9 +25,12 @@ class GetCoinTweetsUseCase @Inject constructor(private val repository: CoinRepos
             emit(Resource.Success<List<CoinTwit>>(coinTwits))
         }
         catch (e: HttpException) {
-            emit((Resource.Error<List<CoinTwit>>(e.localizedMessage ?: "An unexpected error occurred")))
+            emit((Resource.Error(e.localizedMessage ?: "An unexpected error occurred")))
         } catch (e: IOException) {
-            emit(Resource.Error<List<CoinTwit>>("Couldn't reach server. Check your internet connection"))
+            emit(Resource.Error("Couldn't reach server. Check your internet connection"))
+        } catch (e: Exception) {
+            // Catch any other unexpected exceptions
+            emit(Resource.Error(message = "Something went wrong. Please try again later."))
         }
 
     }
